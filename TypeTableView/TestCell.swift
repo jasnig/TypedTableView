@@ -10,35 +10,68 @@ import UIKit
 
 struct TestCelldData {
     let name: String
-    let canSelected: Bool
-    init(name: String, canSelected: Bool = true) {
+    
+    init(name: String) {
         self.name = name
-        self.canSelected = canSelected
     }
     
 }
 
 class TestCell: UITableViewCell {
+    var testBtnOnClickBlosure:CellOnClickAction?
+    
+    lazy var titleLabel: UILabel! = UILabel(frame: CGRect(x: 15, y: 15, width: 100, height: 15))
+    
+    lazy var button: UIButton! = UIButton(frame: CGRectZero)
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        button.setTitle( "测试", forState: .Normal)
+        button.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        button.addTarget(self, action: #selector(self.testBtnOnClick(_:)), forControlEvents: .TouchUpInside)
+        
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(button)
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        // 需要在这里面重新设置frame否则显示不正常
+        titleLabel.frame = CGRect(x: 15, y: 15, width: 100, height: 15)
+        button.frame = CGRect(x: 150, y: 10, width: 50, height: 30)
 
+    }
 
+    func testBtnOnClick(btn:UIButton)  {
+        testBtnOnClickBlosure?(cell: self, btn: btn)
+    }
+    
 }
 
 extension TestCell: CellProtocol {
     // FIXME: the diffenence between the use of typealias and associatedtype
+    //typealias用于指定确切类型时
+    //associatedtype用于关联类型时
     typealias DataModel = TestCelldData
-    typealias CellOnClickAction = Selector?
+    typealias CellOnClickAction = (cell: TestCell, btn: UIButton) -> Void
+
     
-    func updateCellWithData(data: DataModel) {
-        textLabel?.text = data.name
-        
-        
+    func updateCellWithData(data: DataModel, action: CellOnClickAction?) {
+        titleLabel.text = data.name
+        titleLabel.textColor = UIColor.brownColor()
+        testBtnOnClickBlosure = action
     }
 
     func cellDidClickAction(action: CellOnClickAction?) {
-        
-        viewController?.performSelector(action!!)
-        print("haoha")
+        action?(cell: self, btn: self.button)
+//        print("haoha")
     }
 }
 

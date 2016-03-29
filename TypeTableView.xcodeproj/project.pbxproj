@@ -16,6 +16,11 @@
 		4B2398EB1CA545EC0025A83E /* TypeTableViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2398EA1CA545EC0025A83E /* TypeTableViewTests.swift */; };
 		4B2398F61CA545EC0025A83E /* TypeTableViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2398F51CA545EC0025A83E /* TypeTableViewUITests.swift */; };
 		4B2399081CA551970025A83E /* TestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2399071CA551970025A83E /* TestCell.swift */; };
+		4B4241B51CA9477800BC85EA /* TitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4241B41CA9477800BC85EA /* TitleCell.swift */; };
+		4B4241B71CA94EDF00BC85EA /* TitleWithValueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4241B61CA94EDF00BC85EA /* TitleWithValueCell.swift */; };
+		4B4241B91CA959CB00BC85EA /* TitleWithSwitchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4241B81CA959CB00BC85EA /* TitleWithSwitchCell.swift */; };
+		4B4241BB1CA962F800BC85EA /* TitleWithRightImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4241BA1CA962F800BC85EA /* TitleWithRightImageCell.swift */; };
+		4B4241BD1CA9679C00BC85EA /* TitleWithLeftImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B4241BC1CA9679C00BC85EA /* TitleWithLeftImageCell.swift */; };
 		4BFC544B1CA66B7C0020AAC4 /* CellGurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFC54491CA66B7C0020AAC4 /* CellGurator.swift */; };
 		4BFC544C1CA66B7C0020AAC4 /* CellProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BFC544A1CA66B7C0020AAC4 /* CellProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -53,6 +58,12 @@
 		4B2398F51CA545EC0025A83E /* TypeTableViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeTableViewUITests.swift; sourceTree = "<group>"; };
 		4B2398F71CA545EC0025A83E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4B2399071CA551970025A83E /* TestCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestCell.swift; sourceTree = "<group>"; };
+		4B4241B41CA9477800BC85EA /* TitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCell.swift; sourceTree = "<group>"; };
+		4B4241B61CA94EDF00BC85EA /* TitleWithValueCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleWithValueCell.swift; sourceTree = "<group>"; };
+		4B4241B81CA959CB00BC85EA /* TitleWithSwitchCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleWithSwitchCell.swift; sourceTree = "<group>"; };
+		4B4241BA1CA962F800BC85EA /* TitleWithRightImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleWithRightImageCell.swift; sourceTree = "<group>"; };
+		4B4241BC1CA9679C00BC85EA /* TitleWithLeftImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleWithLeftImageCell.swift; sourceTree = "<group>"; };
+		4BBFE9701CA8093200E0DF26 /* TypeTableView-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TypeTableView-Bridging-Header.h"; sourceTree = "<group>"; };
 		4BFC54491CA66B7C0020AAC4 /* CellGurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellGurator.swift; sourceTree = "<group>"; };
 		4BFC544A1CA66B7C0020AAC4 /* CellProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -109,12 +120,18 @@
 				4B2398D71CA545EC0025A83E /* ViewController.swift */,
 				4B1BAF9E1CA62F9400E64B86 /* CommonTableViewDelegator.swift */,
 				4B2399071CA551970025A83E /* TestCell.swift */,
+				4B4241B41CA9477800BC85EA /* TitleCell.swift */,
+				4B4241B61CA94EDF00BC85EA /* TitleWithValueCell.swift */,
+				4B4241B81CA959CB00BC85EA /* TitleWithSwitchCell.swift */,
+				4B4241BA1CA962F800BC85EA /* TitleWithRightImageCell.swift */,
+				4B4241BC1CA9679C00BC85EA /* TitleWithLeftImageCell.swift */,
 				4BFC54491CA66B7C0020AAC4 /* CellGurator.swift */,
 				4BFC544A1CA66B7C0020AAC4 /* CellProtocol.swift */,
 				4B2398D91CA545EC0025A83E /* Main.storyboard */,
 				4B2398DC1CA545EC0025A83E /* Assets.xcassets */,
 				4B2398DE1CA545EC0025A83E /* LaunchScreen.storyboard */,
 				4B2398E11CA545EC0025A83E /* Info.plist */,
+				4BBFE9701CA8093200E0DF26 /* TypeTableView-Bridging-Header.h */,
 			);
 			path = TypeTableView;
 			sourceTree = "<group>";
@@ -205,6 +222,7 @@
 				TargetAttributes = {
 					4B2398D11CA545EC0025A83E = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = 4TQ9VJ82ZF;
 					};
 					4B2398E51CA545EC0025A83E = {
 						CreatedOnToolsVersion = 7.3;
@@ -268,9 +286,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4B4241B51CA9477800BC85EA /* TitleCell.swift in Sources */,
 				4B1BAF9F1CA62F9400E64B86 /* CommonTableViewDelegator.swift in Sources */,
+				4B4241BB1CA962F800BC85EA /* TitleWithRightImageCell.swift in Sources */,
+				4B4241B91CA959CB00BC85EA /* TitleWithSwitchCell.swift in Sources */,
 				4B2398D81CA545EC0025A83E /* ViewController.swift in Sources */,
 				4B2399081CA551970025A83E /* TestCell.swift in Sources */,
+				4B4241BD1CA9679C00BC85EA /* TitleWithLeftImageCell.swift in Sources */,
+				4B4241B71CA94EDF00BC85EA /* TitleWithValueCell.swift in Sources */,
 				4BFC544B1CA66B7C0020AAC4 /* CellGurator.swift in Sources */,
 				4B2398D61CA545EC0025A83E /* AppDelegate.swift in Sources */,
 				4BFC544C1CA66B7C0020AAC4 /* CellProtocol.swift in Sources */,
@@ -417,10 +440,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TypeTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZeroJ.TypeTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TypeTableView/TypeTableView-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -428,10 +455,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TypeTableView/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZeroJ.TypeTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TypeTableView/TypeTableView-Bridging-Header.h";
 			};
 			name = Release;
 		};

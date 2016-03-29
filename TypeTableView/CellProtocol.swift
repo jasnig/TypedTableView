@@ -13,7 +13,7 @@ protocol CellProtocol {
     associatedtype CellOnClickAction
     // func 
     
-    func updateCellWithData(data: DataModel)
+    func updateCellWithData(data: DataModel, action: CellOnClickAction?)
     
     // 点击时响应的方法
     func cellDidClickAction(action: CellOnClickAction?)
