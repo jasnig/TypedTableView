@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4B1BAF9F1CA62F9400E64B86 /* CommonTableViewDelegator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1BAF9E1CA62F9400E64B86 /* CommonTableViewDelegator.swift */; };
+		4B1D5E721CAAA54F005F87E7 /* TitleCellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1D5E711CAAA54F005F87E7 /* TitleCellData.swift */; };
+		4B1EC6011CAAA834002E0201 /* TextController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1EC6001CAAA834002E0201 /* TextController.swift */; };
 		4B2398D61CA545EC0025A83E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2398D51CA545EC0025A83E /* AppDelegate.swift */; };
 		4B2398D81CA545EC0025A83E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B2398D71CA545EC0025A83E /* ViewController.swift */; };
 		4B2398DB1CA545EC0025A83E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4B2398D91CA545EC0025A83E /* Main.storyboard */; };
@@ -44,6 +46,8 @@
 
 /* Begin PBXFileReference section */
 		4B1BAF9E1CA62F9400E64B86 /* CommonTableViewDelegator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonTableViewDelegator.swift; sourceTree = "<group>"; };
+		4B1D5E711CAAA54F005F87E7 /* TitleCellData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleCellData.swift; sourceTree = "<group>"; };
+		4B1EC6001CAAA834002E0201 /* TextController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextController.swift; sourceTree = "<group>"; };
 		4B2398D21CA545EC0025A83E /* TypeTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TypeTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4B2398D51CA545EC0025A83E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4B2398D71CA545EC0025A83E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -118,9 +122,11 @@
 			children = (
 				4B2398D51CA545EC0025A83E /* AppDelegate.swift */,
 				4B2398D71CA545EC0025A83E /* ViewController.swift */,
+				4B1EC6001CAAA834002E0201 /* TextController.swift */,
 				4B1BAF9E1CA62F9400E64B86 /* CommonTableViewDelegator.swift */,
 				4B2399071CA551970025A83E /* TestCell.swift */,
 				4B4241B41CA9477800BC85EA /* TitleCell.swift */,
+				4B1D5E711CAAA54F005F87E7 /* TitleCellData.swift */,
 				4B4241B61CA94EDF00BC85EA /* TitleWithValueCell.swift */,
 				4B4241B81CA959CB00BC85EA /* TitleWithSwitchCell.swift */,
 				4B4241BA1CA962F800BC85EA /* TitleWithRightImageCell.swift */,
@@ -296,6 +302,8 @@
 				4B4241B71CA94EDF00BC85EA /* TitleWithValueCell.swift in Sources */,
 				4BFC544B1CA66B7C0020AAC4 /* CellGurator.swift in Sources */,
 				4B2398D61CA545EC0025A83E /* AppDelegate.swift in Sources */,
+				4B1EC6011CAAA834002E0201 /* TextController.swift in Sources */,
+				4B1D5E721CAAA54F005F87E7 /* TitleCellData.swift in Sources */,
 				4BFC544C1CA66B7C0020AAC4 /* CellProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -443,6 +451,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TypeTableView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZeroJ.TypeTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -458,6 +467,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = TypeTableView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ZeroJ.TypeTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";

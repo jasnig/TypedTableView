@@ -77,12 +77,13 @@ class TitleWithSwitchCell: UITableViewCell {
 
 extension TitleWithSwitchCell: CellProtocol {
     typealias DataModel = TitleCellData
-    typealias CellOnClickAction = ( switchS: AnyObject) -> Void
+    typealias CellOnClickAction = ( switchS: UISwitch) -> Void
 //    typealias CellOnClickAction = (cell: TitleWithSwitchCell, switchS: UISwitch) -> Void
 
     
     func updateCellWithData(data: DataModel, action: CellOnClickAction?) {
         titleLabel.text = data.name
+        switchS.on = data.isOn
         switchOnClickAction = action
     }
     

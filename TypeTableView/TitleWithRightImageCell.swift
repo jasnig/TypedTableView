@@ -59,8 +59,9 @@ class TitleWithRightImageCell: UITableViewCell {
         iconView.translatesAutoresizingMaskIntoConstraints = false
         contentView.addConstraints([iconRCons, iconCenterCons, iconHeightCons, iconWidthCons])
         
-//        iconView.layer.cornerRadius = iconView.bounds.size.width / 2
-//        iconView.clipsToBounds = true
+        iconView.layer.masksToBounds = true
+        iconView.layer.cornerRadius = iconView.bounds.size.height / 2
+        
     }
     
 //    func switchOnClick(swh:UISwitch)  {
@@ -92,7 +93,10 @@ extension TitleWithRightImageCell: CellProtocol {
     func updateCellWithData(data: DataModel, action: CellOnClickAction?) {
         titleLabel.text = data.name
         switchOnClickAction = action
-        iconView.image = UIImage(named: "AppIcon120x120")
+        if let iconName = data.iconName {
+            iconView.image = UIImage(named: iconName)
+
+        }
     }
     
     func cellDidClickAction(action: CellOnClickAction?) {

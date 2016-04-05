@@ -8,17 +8,6 @@
 
 import UIKit
 
-
-struct TitleCellData {
-    let name: String
-    let value:String?
-    
-    init(name: String, value: String? = nil) {
-        self.name = name
-        self.value = value
-    }
-}
-
 class TitleCell: UITableViewCell {
     lazy var titleLabel: UILabel! = UILabel(frame: CGRectZero)
 

@@ -79,7 +79,7 @@ extension TitleWithValueCell: CellProtocol {
     
     func updateCellWithData(data: DataModel, action: CellOnClickAction?) {
         titleLabel.text = data.name
-        valueLabel.text = data.value
+        valueLabel.text = data.detailValue
     }
     
     func cellDidClickAction(action: CellOnClickAction?) {

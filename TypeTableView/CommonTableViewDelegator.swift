@@ -10,15 +10,23 @@ import UIKit
 
 class CommonTableViewDelegator: NSObject, UITableViewDelegate, UITableViewDataSource {
     
-    var datas:[CommonTableSectionData]
-    var tableView: UITableView!
-    init(data: [CommonTableSectionData], tableView: UITableView) {
+    var datas:[CommonTableSectionData] {
+        return recieveData()
+    }
+    
+    
+    // 需要一个闭包来捕获到外面传过来的data, 在外面的data变化时datas也相应的变化
+    typealias CaptureDataBlosure = () -> [CommonTableSectionData]
+    let recieveData: CaptureDataBlosure
+    let tableView: UITableView!
+    
+    init(tableView: UITableView, data: CaptureDataBlosure) {
         self.tableView = tableView
-        self.datas = data
-
+        self.recieveData = data
         super.init()
         registCell()
     }
+        
     
     
     func registCell() {
@@ -33,6 +41,8 @@ class CommonTableViewDelegator: NSObject, UITableViewDelegate, UITableViewDataSo
         }
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        print(datas)
+
         return datas.count
     }
     
