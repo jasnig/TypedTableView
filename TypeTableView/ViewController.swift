@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     var datas: [CommonTableSectionData] = []
     //!!!: 这个代理中间人必须是被强持有的, 否则不能生效
     var delegator:CommonTableViewDelegator!
-    var testdata = TitleCellData(name: "测试标题和开关", isOn: false)
+    var testdata = TypedCellDataModel(name: "测试标题和开关", isOn: false)
     var name = "测试"
     var value = "测试详情"
     
@@ -35,8 +35,6 @@ class ViewController: UIViewController {
     func test()  {
         name = "ceshi"
         value = "成功"
-        
-        bulidData()
         tableView.reloadData()
         print("22222222")
     }
@@ -45,40 +43,49 @@ class ViewController: UIViewController {
         testdata.isOn = !testdata.isOn
         bulidData()
         tableView.reloadData()
-
         print(switchS.on)
 
     }
 
     func bulidData() {
         
-        let row1 = CellGurator<TitleCell>(dataModel: TitleCellData(name: "只有标题"), cellDidClickAction: test)
-        let row2 = CellGurator<TitleWithValueCell>(dataModel: TitleCellData(name: "测试值回填", detailValue: value), cellDidClickAction: test1)
-        let row3 = CellGurator<TitleWithSwitchCell>(dataModel: testdata, cellDidClickAction: switchOnClick, canSelected: false)
-        
-        let row4 = CellGurator<TitleWithRightImageCell>(dataModel: TitleCellData(name: "右边有头像",iconName: "AppIcon120x120"), cellDidClickAction: test, cellHeight: 60)
-        let row5 = CellGurator<TitleWithLeftImageCell>(dataModel: TitleCellData(name: "左边有头像",iconName: "AppIcon120x120"), cellDidClickAction: test)
-        let row6 = CellGurator<TitleWithLeftImageCell>(dataModel: TitleCellData(name: "ceshi", detailValue: value), cellDidClickAction: test)
+        let row1 = CellBuilder<TitleOnlyCell>(dataModel: TypedCellDataModel(name: "只有标题"), cellDidClickAction: {[unowned self] in
+            
+                self.test()
+            })
+        let row2 = CellBuilder<TitleWithDetailValueCell>(dataModel: TypedCellDataModel(name: "测试值回填", detailValue: value), cellDidClickAction:  {[unowned self] in
+            self.test1()
+        })
+        let row3 = CellBuilder<TitleWithSwitchCell>(dataModel: testdata, canSelected: true, cellDidClickAction: {[unowned self](switchS: UISwitch) in
+            self.switchOnClick(switchS)
+        })
+        let row4 = CellBuilder<TitleWithRightImageCell>(dataModel: TypedCellDataModel(name: "右边有头像",iconName: "AppIcon120x120"), cellHeight: 60, cellDidClickAction: {[unowned self] in
+            
+            self.test()
+        })
+
+        let row5 = CellBuilder<TitleWithLeftImageCell>(dataModel: TypedCellDataModel(name: "左边有头像",iconName: "AppIcon120x120"), cellDidClickAction: {[unowned self] in
+            
+            self.test()
+        })
+
+        let row6 = CellBuilder<TitleWithLeftImageCell>(dataModel: TypedCellDataModel(name: "ceshi", detailValue: value), cellDidClickAction: {[unowned self] in
+            
+            self.test()
+        })
+
 
         let rows1: [CellConfiguratorType] = [row1,row2,row3,row4,row5, row6]
+        let rows2: [CellConfiguratorType] = [row1,row2,row3,row4,row5, row6]
+        let rows3: [CellConfiguratorType] = [row1,row2,row3,row4,row5, row6]
 
         let section1 = CommonTableSectionData(headerTitle: "edc", footerTitle: "rqewr", headerHeight: 55, footerHeight: 28, rows: rows1)
+        let section2 = CommonTableSectionData(headerTitle: "edc", footerTitle: "rqewr", headerHeight: 55, footerHeight: 28, rows: rows2)
+        let section3 = CommonTableSectionData(headerTitle: "edc", footerTitle: "rqewr", headerHeight: 55, footerHeight: 28, rows: rows3)
 
-        datas = [section1]
+        datas = [section1, section2, section3]
     }
     
-    
-    func testblosure(cell: TestCell, btn: UIButton)  {
-        print(cell)
-        print(btn.titleLabel?.text)
-    }
-    
-    func testblosure1(cell: TestCell, btn: UIButton)  {
-        print("-------------------")
-        print(btn.titleLabel?.text)
-    }
-
-
     func test1()  {
         
         let vc = TextController()
@@ -86,7 +93,6 @@ class ViewController: UIViewController {
         vc.doneBtnOnClick = {[unowned self] (string: String) in
         
             self.value = string
-                
             self.bulidData()
             self.tableView.reloadData()
 

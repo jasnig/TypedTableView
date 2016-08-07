@@ -4,7 +4,9 @@
 //
 //  Created by jasnig on 16/3/26.
 //  Copyright © 2016年 ZeroJ. All rights reserved.
-//
+///
+// github: https://github.com/jasnig
+// 简书: http://www.jianshu.com/users/fb31a3d1ec30/latest_articles
 
 import UIKit
 
@@ -14,35 +16,41 @@ class CommonTableViewDelegator: NSObject, UITableViewDelegate, UITableViewDataSo
         return recieveData()
     }
     
-    
     // 需要一个闭包来捕获到外面传过来的data, 在外面的data变化时datas也相应的变化
-    typealias CaptureDataBlosure = () -> [CommonTableSectionData]
-    let recieveData: CaptureDataBlosure
-    let tableView: UITableView!
+    typealias CaptureDataClosure = () -> [CommonTableSectionData]
     
-    init(tableView: UITableView, data: CaptureDataBlosure) {
+    let recieveData: CaptureDataClosure
+    weak var tableView: UITableView!
+    
+    init(tableView: UITableView, data: CaptureDataClosure) {
         self.tableView = tableView
         self.recieveData = data
         super.init()
         registCell()
-    }
         
+    }
     
     
     func registCell() {
         
-        for sectionsData in datas {
-            let rowsData = sectionsData.rows
-            for rowdata in rowsData {
-        
-                tableView.registerClass(rowdata.cellClass, forCellReuseIdentifier: rowdata.reusedIndentifier)
+        datas.forEach { (sectionsData) in
+            sectionsData.rows.forEach({ [unowned self] (rowData) in
 
-            }
+                let hasNib = NSBundle.mainBundle().pathForResource(String(rowData.cellClass), ofType: ".nib") != nil
+                
+                if hasNib {
+                    self.tableView.registerNib(UINib(nibName: String(rowData.cellClass), bundle: nil), forCellReuseIdentifier: rowData.reusedIndentifier)
+                }
+                else {
+                    self.tableView.registerClass(rowData.cellClass, forCellReuseIdentifier: rowData.reusedIndentifier)
+
+                }
+                
+            })
         }
+
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        print(datas)
-
         return datas.count
     }
     
@@ -56,7 +64,6 @@ class CommonTableViewDelegator: NSObject, UITableViewDelegate, UITableViewDataSo
         let rawsData = sectionsData.rows
         let rawData = rawsData[indexPath.row]
 
- 
         let cell = tableView.dequeueReusableCellWithIdentifier(rawData.reusedIndentifier, forIndexPath: indexPath)
         
         cell.accessoryType = rawData.canSelected ? .DisclosureIndicator : .None
@@ -74,19 +81,16 @@ class CommonTableViewDelegator: NSObject, UITableViewDelegate, UITableViewDataSo
 //
 //        }
         
-        rawData.updateCell(cell)
+//        rawData.updateCell(cell)
         return cell
     }
     
-
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let sectionsData = datas[indexPath.section]
         let rawsData = sectionsData.rows
         let rawData = rawsData[indexPath.row]
-        // 这里不要使用重用方法获取,之前就是因为在这里使用重用机制获取cell,导致点击后获取到的cell的内容并没有再次更新, 所以数据显示不正常
         let cell = tableView.cellForRowAtIndexPath(indexPath)
-//        rawData.updateCell(cell)
         rawData.cellOnClickAction(cell!)
     }
     
@@ -117,8 +121,10 @@ class CommonTableViewDelegator: NSObject, UITableViewDelegate, UITableViewDataSo
     }
 
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        
-//        tableView.addLineForCell(cell, atIndexPath: indexPath, leftPadding: 25)
+        let sectionsData = datas[indexPath.section]
+        let rawsData = sectionsData.rows
+        let rawData = rawsData[indexPath.row]
+        rawData.updateCell(cell)
 
     }
     
